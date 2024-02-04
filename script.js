@@ -6,10 +6,9 @@ function etchasketch()
 
     const sizebtn = document.getElementById("sizebtn");
 
+    grid(8);
 
-
-    let size = 16;
-    
+    function grid(size){
         for(let i=0; i<size; i++)
         {
             const row = document.createElement("tr");
@@ -33,16 +32,33 @@ function etchasketch()
         table.setAttribute('id','grid');
     
         container.appendChild(table);
+    }
+
+    sizebtn.addEventListener("click", function()
+    {
+        grid(prompt("set grid size"))
+    })
+        
+    
+
+        
+        
+    
     
         document.querySelectorAll('#grid td')
-        .forEach(e => e.addEventListener("click", function(event) {
+        .forEach(e => e.addEventListener("mouseover", function(event) {
 
             let td = event.target;
 
             td.style.backgroundColor = "black";
-
-            console.log(td)
         }));
+
+        const clear = document.getElementById("clear");
+
+        clear.addEventListener("click", function(){
+
+            document.querySelectorAll('#grid td').forEach.style.backgroundColor = "white";
+        })
 }
 
 etchasketch();
