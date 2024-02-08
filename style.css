@@ -1,6 +1,10 @@
 body
 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
+    height: 100vh;
 }
 #container
 {
@@ -9,16 +13,23 @@ body
     align-items: center;
     justify-content: center;
 
-    height: 100vh;
 }
-#grid, td, tr
+.grid, td, tr
 {
     border: 1px solid black;
     border-collapse: collapse;
 }
-td
+.grid
 {
-    height: 50px;
-    width: 50px;
+    height: 500px;
+    width: 500px;
 
+}
+.cell
+{
+    background-color: black;
+}
+.gridnotvisible
+{
+    display: none;
 }

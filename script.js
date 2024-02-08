@@ -6,21 +6,38 @@ function etchasketch()
 
     const sizebtn = document.getElementById("sizebtn");
 
-    grid(8);
+
+    // function gridremove(){
+
+    //     if(table)
+    //     {
+    //         table.parentNode.removeChild(table);
+    //     }
+    // }
+
+        
+        
 
     function grid(size){
+
+        removetable()
+
         for(let i=0; i<size; i++)
         {
             const row = document.createElement("tr");
     
             for(let j=1; j<=size; j++ )
             {
-                const cell = document.createElement("td");          
+                const cell = document.createElement("td");  
+                
+                
 
                 
             row.appendChild(cell);
     
             console.log(cell);
+
+            
             }
      
             table.appendChild(row);
@@ -29,36 +46,60 @@ function etchasketch()
         
         }
     
-        table.setAttribute('id','grid');
+        table.classList.add('grid');
     
         container.appendChild(table);
     }
 
-    sizebtn.addEventListener("click", function()
-    {
-        grid(prompt("set grid size"))
-    })
+    grid(16)
+   
         
-    
-
-        
-        
-    
-    
-        document.querySelectorAll('#grid td')
+        document.querySelectorAll('.grid td')
         .forEach(e => e.addEventListener("mouseover", function(event) {
 
-            let td = event.target;
+            event.target.classList.add('cell');
 
-            td.style.backgroundColor = "black";
+           
+
         }));
 
-        const clear = document.getElementById("clear");
+    function removetable()
+    {
 
-        clear.addEventListener("click", function(){
+        while(table)
+        {
+            container.removeChild(table)
+        }
 
-            document.querySelectorAll('#grid td').forEach.style.backgroundColor = "white";
+    }
+
+    function changetable()
+    {   
+        
+
+            while(!table)
+            {
+                container.appendChild(table)
+                let gridsize = prompt('Set the grid size');
+                grid(gridsize);
+
+            }
+
+            
+
+
+        }
+
+    sizebtn.addEventListener('click',changetable);
+
+    const clearbtn = document.getElementById('clear');
+
+
+        clearbtn.addEventListener('click', function(event){
+
+            document.querySelectorAll('.grid td').forEach(e => e.classList.remove('cell'))
         })
 }
+
 
 etchasketch();
